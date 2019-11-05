@@ -19,7 +19,7 @@ function populateButtons(searchArray,classToAdd,areaToAddTo){
 
 $(document).on('click','.searchButton',function(){
     var type = $(this).data('type');
-    var queryURL = 'http://api.giphy.com/v1/gifs/search?q='+type+'&api_key=XjVLqP7gjKPzGBvvMX9JnYe2V36NOyPg&limit=10';
+    var queryURL = 'http://api.giphy.com/v1/gifs/search?q='+type+'&api_key=6yRATyDy6m7UbwtaHjKYkEEmlJr7zeMe&limit=10';
     $.ajax({url:queryURL,method:'GET'})
     .done(function(response){
         for(var i=0;i<response.data.length;i++){
@@ -37,6 +37,7 @@ $(document).on('click','.searchButton',function(){
             searchDiv.append(p);
             searchDiv.append(image);
             $('#searches').append(searchDiv);
+            
         }
     })
 })
@@ -73,7 +74,9 @@ $(document).on('click','.searchImage',function(){
 $('#addSearch').on('click',function(){
     var newSearch = $('input').eq(0).val();
     searchArray.push(newSearch);
+    $("#searches").empty()
     populateButtons(searchArray,'searchButton','#buttonsArea');
     return false; 
+    
 })
 
